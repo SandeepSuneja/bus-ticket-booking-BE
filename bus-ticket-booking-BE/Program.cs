@@ -34,6 +34,8 @@ public class Program
 
         app.UseHttpsRedirection();
 
+        app.UseCors(builder => builder.WithOrigins("http://localhost:4200"));
+
         app.UseAuthorization();
 
 

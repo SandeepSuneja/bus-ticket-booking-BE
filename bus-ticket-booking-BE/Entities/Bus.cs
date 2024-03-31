@@ -13,7 +13,7 @@ namespace bus_ticket_booking_BE.Entities;
     public int route_id { get; set; }
 
     [Required]
-    public string bus_Number { get; set; }
+    public string bus_number { get; set; }
 
     [Required]
     public int seat_capacity { get; set; }

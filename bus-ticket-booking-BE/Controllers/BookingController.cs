@@ -24,20 +24,10 @@ namespace bus_ticket_booking_BE.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddBooking()
+        public async Task<ActionResult> AddBooking([FromBody] Booking booking)
         {
-            Booking booking = new Booking();
-            booking.booking_id = 403;
-            booking.bus_id = 101;
-            booking.route_id = 201;
-            booking.schedule_id = 301;
-            booking.tickets_booked = 2;
-            booking.ticket_price = 400;
-            booking.created_at = DateTime.UtcNow;
-            booking.updated_at = DateTime.UtcNow;
             _context.Bookings.Add(booking);
             await _context.SaveChangesAsync();
-            //return CreatedAtAction("Get", new { id = booking.booking_id }, booking);
             return Ok();
         }
     }

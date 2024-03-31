@@ -3,17 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace bus_ticket_booking_BE.Entities;
 
-public enum RouteStatus
-{
-    Enabled,
-    Disabled
-};
-
 [Table("Route")]
 public class Route {
 
     [Key]
-    public Guid route_id { get; set; }
+    public int route_id { get; set; }
 
     [Required]
     public string origin { get; set; }
@@ -25,7 +19,7 @@ public class Route {
     public float duration { get; set; }
 
     [Required]
-    public RouteStatus status { get; set; }
+    public string status { get; set; }
 
     [Required]
     public DateTime created_at { get; set; } = DateTime.UtcNow;

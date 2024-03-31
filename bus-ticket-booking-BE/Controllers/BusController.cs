@@ -23,7 +23,7 @@ namespace bus_ticket_booking_BE.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateStatus(Guid id, BusStatus status)
+        public ActionResult UpdateStatus(int id, [FromQuery] string status)
         {
             var bus = _context.Buses.ToList().Find(p => p.bus_id == id);
             if (bus == null)
@@ -32,7 +32,9 @@ namespace bus_ticket_booking_BE.Controllers
             }
             
             bus.status = status;
-            return NoContent();
+            bus.updated_at = DateTime.UtcNow;
+            _context.SaveChanges();
+            return Ok();
         }
     }
 }

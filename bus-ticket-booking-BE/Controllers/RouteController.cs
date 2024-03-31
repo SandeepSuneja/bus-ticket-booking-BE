@@ -22,26 +22,27 @@ namespace bus_ticket_booking_BE.Controllers
             return _context.Routes.ToList();
         }
 
-        [HttpPut]
-        public ActionResult ToggleStatus([FromBody] Guid id)
+        [HttpPut("{id}")]
+        public ActionResult ToggleStatus(int id)
         {
             var route = _context.Routes.ToList().Find(route => route.route_id == id);
         
             if(route == null)
             {
-                return Ok(id);
+                return NotFound();
             }
 
-            if(route.status == RouteStatus.Enabled)
+            if(route.status == "Enabled")
             {
-                route.status = RouteStatus.Disabled;
+                route.status = "Disabled";
             }
-            else if (route.status == RouteStatus.Disabled)
+            else if (route.status == "Disabled")
             {
-                route.status = RouteStatus.Enabled;
+                route.status = "Enabled";
             }
-
-            return Ok(route);
+            route.updated_at = DateTime.UtcNow;
+            _context.SaveChanges();
+            return Ok();
         }
     }
 }

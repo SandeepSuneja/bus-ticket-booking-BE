@@ -7,23 +7,19 @@ namespace bus_ticket_booking_BE.Entities
 	public class Booking
 	{
 		[Key]
-		public Guid booking_id { get; set; }
+		public int booking_id { get; set; }
 
 		[Required]
 		[ForeignKey("bus_id")]
-		public Guid bus_id { get; set; }
+		public int bus_id { get; set; }
 
 		[Required]
 		[ForeignKey("route_id")]
-		public Guid route_id { get; set; }
+		public int route_id { get; set; }
 
 		[Required]
 		[ForeignKey("schedule_id")]
-		public Guid schedule_id { get; set; }
-
-		[Required]
-		[ForeignKey("user_id")]
-		public Guid user_id { get; set; }
+		public int schedule_id { get; set; }
 
 		[Required]
 		public int tickets_booked { get; set; }

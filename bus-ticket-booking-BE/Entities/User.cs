@@ -13,7 +13,7 @@ namespace bus_ticket_booking_BE.Entities
 	public class User
 	{
 		[Key]
-		public Guid user_id { get; set; }
+		public int user_id { get; set; }
 
 		[Required]
 		[MaxLength(20)]

@@ -28,4 +28,10 @@ namespace bus_ticket_booking_BE.Entities;
 
     [ForeignKey("schedule_id")]
     public int schedule_id { get; set; }
+
+    [Required]
+    public int ticket_price { get; set; }
+
+    [Required]
+    public int seat_occupied { get; set; }
 }

@@ -22,6 +22,18 @@ namespace bus_ticket_booking_BE.Controllers
             return _context.Routes.ToList();
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<Entities.Route>> GetRouteById(int id)
+        {
+            var route = _context.Routes.ToList().Find(x => x.route_id == id);
+            if (route == null)
+            {
+                return NotFound();
+            }
+            return Ok(route);
+        }
+
+
         [HttpPut("{id}")]
         public ActionResult ToggleStatus(int id)
         {

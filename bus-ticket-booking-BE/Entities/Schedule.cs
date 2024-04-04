@@ -10,10 +10,6 @@ namespace bus_ticket_booking_BE.Entities
         public int schedule_id { get; set; }
 
         [Required]
-        [ForeignKey("bus_id")]
-        public int bus_id { get; set; }
-
-        [Required]
         public TimeOnly departure_time { get; set; }
 
         [Required]

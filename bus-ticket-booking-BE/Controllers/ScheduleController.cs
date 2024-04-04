@@ -22,6 +22,17 @@ namespace bus_ticket_booking_BE.Controllers
         {
             return _context.Schedules.ToList();
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<Schedule>> GetScheduleById(int id)
+        {
+            var schedule = _context.Schedules.ToList().Find(x => x.schedule_id == id);
+            if (schedule == null)
+            {
+                return NotFound();
+            }
+            return Ok(schedule);
+        }
     }
 }
 

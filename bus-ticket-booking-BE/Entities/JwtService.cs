@@ -17,7 +17,7 @@ namespace bus_ticket_booking_BE.Entities
 			_expiryInMinutes = expiryInMinues;
 		}
 
-		public string GenerateToken(string username)
+		public string GenerateToken(User user)
 		{
 			var tokenHandler = new JwtSecurityTokenHandler();
 			var key = Encoding.ASCII.GetBytes(_secretKey);
@@ -26,7 +26,7 @@ namespace bus_ticket_booking_BE.Entities
 			{
                 Subject = new ClaimsIdentity(new Claim[]
 				{
-					new Claim(ClaimTypes.Name, username)
+					new Claim(ClaimTypes.Name, user.email)
 				}),
                 Expires = DateTime.UtcNow.AddMinutes(_expiryInMinutes),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

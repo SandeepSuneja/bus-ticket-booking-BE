@@ -1,5 +1,6 @@
 ﻿
 using bus_ticket_booking_BE.Data;
+using bus_ticket_booking_BE.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace bus_ticket_booking_BE;
@@ -34,7 +35,9 @@ public class Program
 
         app.UseHttpsRedirection();
 
-        app.UseCors(builder => builder.WithOrigins("http://localhost:4200"));
+        app.UseCors(builder => builder.WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
 
         app.UseAuthorization();
 

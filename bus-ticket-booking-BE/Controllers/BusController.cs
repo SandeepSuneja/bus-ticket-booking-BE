@@ -57,6 +57,19 @@ namespace bus_ticket_booking_BE.Controllers
             _context.SaveChanges();
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteBus(int id)
+        {
+            var bus = _context.Buses.ToList().Find(p => p.bus_id == id);
+            if (bus == null)
+            {
+                return NotFound();
+            }
+            _context.Buses.ToList().Remove(bus);
+            _context.SaveChanges();
+            return Ok();
+        }
     }
 }
 

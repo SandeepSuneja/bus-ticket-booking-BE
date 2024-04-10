@@ -7,7 +7,7 @@ namespace bus_ticket_booking_BE.Entities
 	public class Booking
 	{
 		[Key]
-		public int booking_id { get; set; }
+		public string booking_id { get; set; }
 
 		[Required]
 		[ForeignKey("bus_id")]

@@ -33,6 +33,19 @@ namespace bus_ticket_booking_BE.Controllers
             }
             return Ok(schedule);
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteSchedule(int id)
+        {
+            var schedule = _context.Schedules.ToList().Find(p => p.schedule_id == id);
+            if (schedule == null)
+            {
+                return NotFound();
+            }
+            _context.Schedules.ToList().Remove(schedule);
+            _context.SaveChanges();
+            return Ok();
+        }
     }
 }
 

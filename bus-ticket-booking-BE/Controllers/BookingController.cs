@@ -26,9 +26,11 @@ namespace bus_ticket_booking_BE.Controllers
         [HttpPost]
         public async Task<ActionResult> AddBooking([FromBody] Booking booking)
         {
+            booking.created_at = DateTime.UtcNow;
+            booking.updated_at = DateTime.UtcNow;
             _context.Bookings.Add(booking);
             await _context.SaveChangesAsync();
-            return Ok();
+            return Ok(booking.booking_id);
         }
     }
 }
